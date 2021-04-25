@@ -13,16 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\MainController@welcome');
+Route::get('/', 'App\Http\Controllers\MainController@welcome')->name('welcome');
 
-Route::get('/catalog', 'App\Http\Controllers\MainController@catalog');
+Route::get('/catalog', 'App\Http\Controllers\CatalogController@catalog')->name('catalog');
 
-Route::get('/declaration', 'App\Http\Controllers\MainController@declaration');
+Route::get('/declaration', 'App\Http\Controllers\DeclarationController@declaration')->name('declaration');
 
-Route::get('/contacts', 'App\Http\Controllers\MainController@contacts');
+Route::get('/contacts', 'App\Http\Controllers\MainController@contacts')->name('contacts');
 
-Route::get('/authorization', 'App\Http\Controllers\MainController@authorization');
+Route::get('/authorization', 'App\Http\Controllers\MainController@authorization')->name('authorization');
 
-Route::get('/cabinet', 'App\Http\Controllers\MainController@cabinet');
+Route::get('/cabinet', 'App\Http\Controllers\MainController@cabinet')->name('cabinet');
 
-Route::get('/review', 'App\Http\Controllers\MainController@review');
+Route::post('/review', 'App\Http\Controllers\MainController@review')->name('review');
