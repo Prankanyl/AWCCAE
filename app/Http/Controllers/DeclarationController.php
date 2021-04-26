@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoryCatalog;
 use App\Models\Declaration;
 use Illuminate\Http\Request;
 
 class DeclarationController extends Controller
 {
   public function declaration(){
+    $categories = new CategoryCatalog();
     $declarations = new Declaration();
-    return view('declaration', ['declarations' => $declarations->all()]);
+    return view('declaration', ['declarations' => $declarations->all(), 'categories' => $categories->all()]);
   }
 
   public function added_declaration(Request $request){

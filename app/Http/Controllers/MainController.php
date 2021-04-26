@@ -2,17 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catalog;
+use App\Models\CategoryCatalog;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
   public function welcome(){
-    return view('welcome');
+    $catalogs = new Catalog();
+    $categories = new CategoryCatalog();
+    return view('welcome', ['catalogs' => $catalogs->paginate(6), 'categories' => $categories->all()]);
+  }
+
+  public function pagination(){
+    return view('');
   }
 
   public function contacts(){
-    return view('contacts');
+    $categories = new CategoryCatalog();
+    $reviews = new Contact();
+    // orderBy('id', 'desc')
+    $reviews = $reviews->all();
+    return view('contacts', ['categories' => $categories->all(), 'reviews' => $reviews]);
   }
 
   public function authorization(){
@@ -21,23 +33,5 @@ class MainController extends Controller
 
   public function cabinet(){
     return view('cabinet');
-  }
-
-  public function review(Request $request){
-    // dd($request);
-    $valid = $request->validate([
-      'email' => 'required|min:4|max:100',
-      'subject' => 'required|min:4|max:100',
-      'message' => 'required|min:4|max:500'
-    ]);
-
-    $review = new Contact();
-    $review->email = $request->input('email');
-    $review->subject = $request->input('subject');
-    $review->message = $request->input('message');
-
-    $review->save();
-
-    return redirect()->route('contacts');
   }
 }

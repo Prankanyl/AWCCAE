@@ -1,21 +1,47 @@
-@extends('layout_with_left_menu')
+@extends('layout')
 @section('title')
 Контакты
 @endsection
+@section('style')
+<link rel="stylesheet" href="css/style_contacts.css">
+@endsection
+@section('left_content')
+<div class="menu">
+  <div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action"  aria-current="true" role="button">
+      <h3>Каталог товаров</h3>
+    </a>
+    @foreach ($categories as $item)
+    <a href="#" class="list-group-item list-group-item-action">{{$item->category}}</a>
+    @endforeach
+    <br>
+  </div>
+</div>
+@endsection
 @section('right_content')
-<div class="info">
-  <h2>Контактная информация</h2>
+<div class="container info">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>Информация</h1>
+      <p>Интернет магазин строительных материалов <b>AWCCAE.COM</b></p>
+      <p>AWCCAE.COM — это один из ведущих поставщиков строительных и отделочных материалов в Беларуси. Мы осуществляем поставки во все регионы страны — для строительных организаций, специализированных бригад, строителей и на объекты частной застройки.</p>
+      <h1>Контакты:</h1>
+      <p><b>Телефон МТС:</b> +375291234567</p>
+      <p><b>Телефон А1:</b> +375441234567</p>
+      <p><b>Email:</b> awccae@awccae.com</p>
 
+    </div>
+  </div>
 </div>
 @endsection
 @section('footer')
 <div class="review">
   <div class="container">
-    <h2>Отзывы</h2>
+    <h1>Напишите свой отзыв</h1>
     @if($errors->any())
     <div class="alert alert-danger">
       <ul>
-        @foreach ($errors->all() as $error): ?>
+        @foreach ($errors->all() as $error)
           <li>{{ $error }}</li>
         @endforeach
       </ul>
@@ -37,6 +63,24 @@
       </div>
       <button type="submit" name="submit" class="form-control btn btn-warning">Отправить</button>
     </form>
+  </div>
+</div>
+<div class="review-block">
+  <div class="container">
+    <h1>Отзывы пользователей</h1>
+    @foreach ($reviews as $item)
+      <div class="review-card">
+        <div class="card">
+          <div class="card-header">
+            {{$item->email}}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{$item->subject}}</h5>
+            <p class="card-text">{{$item->message}}</p>
+          </div>
+        </div>
+      </div>
+    @endforeach
   </div>
 </div>
 @endsection
