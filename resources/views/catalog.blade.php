@@ -16,6 +16,19 @@
 </div>
 @endsection
 @section('right_content')
+<h1>Сортировка</h1>
+<form class="" action="#" method="post">
+  <select class="form-select" aria-label="Default select example">
+    <option value="1" selected>One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <select class="form-select" aria-label="Default select example">
+    <option value="1" selected>По возрастанию</option>
+    <option value="2">По убыванию</option>
+  </select>
+  <button type="button" name="button">Сортировать</button>
+</form>
 <h1>Каталог товаров</h1>
 <div class="row row-cols-1 row-cols-md-3 g-4">
   @foreach ($catalogs as $item)
