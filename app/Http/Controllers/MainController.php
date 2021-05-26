@@ -19,19 +19,13 @@ class MainController extends Controller
     return view('');
   }
 
-  public function contacts(){
-    $categories = new CategoryCatalog();
-    $reviews = new Contact();
-    // orderBy('id', 'desc')
-    $reviews = $reviews->all();
-    return view('contacts', ['categories' => $categories->all(), 'reviews' => $reviews]);
-  }
-
   public function authorization(){
-    return view('authorization');
+    $categories = new CategoryCatalog();
+    return view('authorization', ['categories' => $categories->all()]);
   }
 
   public function cabinet(){
-    return view('cabinet');
+    $categories = new CategoryCatalog();
+    return view('cabinet', ['categories' => $categories->all()]);
   }
 }

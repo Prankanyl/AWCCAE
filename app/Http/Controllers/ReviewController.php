@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\CategoryCatalog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class ReviewController extends Controller
 {
@@ -23,5 +25,13 @@ class ReviewController extends Controller
     $review->save();
 
     return redirect()->route('contacts');
+  }
+
+  public function contacts(Request $request){
+    $categories = new CategoryCatalog();
+    $reviewsQuery = Contact::query();
+    $reviewsQuery->orderBy('id', 'desc');
+    $reviews = $reviewsQuery->get();
+    return view('contacts', ['categories' => $categories->all(), 'reviews' => $reviews]);
   }
 }

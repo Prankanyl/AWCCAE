@@ -1,5 +1,29 @@
-div.col-lg-4 {
+div.left-menu{
   background-color: #212529;
+}
+
+div.right-menu{
+   margin-left: 2%;
+}
+
+div.info {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 10px;
+}
+div.info h1 {
+  color: #000000;
+  text-align: center;
+}
+
+div.info p{
+  text-indent: 1.5em;
+  font-size: 20px;
+}
+div.info b{
+  color: ##ffc029;
 }
 
 h1 {
@@ -9,6 +33,11 @@ h1 {
 
 img.size-100-200 {
   height: 200px;
+}
+
+input.submit-212529{
+  background-color: #212529;
+  color: #ffffff;
 }
 
 footer {

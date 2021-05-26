@@ -26,23 +26,3 @@ div.review-card {
   padding-left: 5%;
   padding-right: 5%;
 }
-
-div.info {
-  margin-top: 1%;
-  margin-bottom: 1%;
-  background-color: #ffffff;
-  border: 1px solid #000000;
-  border-radius: 10px;
-}
-div.info h1 {
-  color: #000000;
-  text-align: center;
-}
-
-p{
-  text-indent: 1.5em;
-  font-size: 20px;
-}
-b{
-  color: ##ffc029;
-}

@@ -38,9 +38,10 @@
             <a class="nav-link" href="/authorization">Авторизация</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">
-          <button class="btn btn-warning" type="submit">Поиск</button>
+        <form class="d-flex" action="/catalog">
+          <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" id="title" name="title">
+          <!-- <button class="btn btn-warning" type="submit">Поиск</button> -->
+          <input type="submit" name="button" value="Поиск" class="btn btn-warning">
         </form>
       </div>
     </div>
@@ -48,10 +49,10 @@
   @yield('header')
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-lg-3 left-menu">
         @yield('left_content')
       </div>
-      <div class="col-lg-8">
+      <div class="col-lg-9">
         @yield('right_content')
       </div>
     </div>
@@ -60,22 +61,19 @@
   <footer class="bg-dark text-center text-white">
     <div class="container p-4">
       <section class="mb-4">
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com" role="button">
           <i class="fab fa-facebook-f"></i>
         </a>
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com" role="button">
           <i class="fab fa-twitter"></i>
         </a>
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <a class="btn btn-outline-light btn-floating m-1" href="https://google.com" role="button">
           <i class="fab fa-google"></i>
         </a>
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <a class="btn btn-outline-light btn-floating m-1" href="https://instagram.com" role="button">
           <i class="fab fa-instagram"></i>
         </a>
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <a class="btn btn-outline-light btn-floating m-1" href="https://github.com" role="button">
           <i class="fab fa-github"></i>
         </a>
       </section>
@@ -109,53 +107,52 @@
       <section class="">
         <div class="row">
           <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Links</h5>
+            <h5 class="text-uppercase">Категории</h5>
+            <ul class="list-unstyled mb-0">
+              @for ($i = 1; $i <= 5; $i++)
+              <li>
+                <a href="#!" class="text-white">{{$categories[$i]->category}}</a>
+              </li>
+              @endfor
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Ссылки</h5>
             <ul class="list-unstyled mb-0">
               <li>
-                <a href="#!" class="text-white">Link 1</a>
+                <a href="#!" class="text-white">Главная</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 2</a>
+                <a href="#!" class="text-white">Каталог</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 3</a>
+                <a href="#!" class="text-white">Объявления</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 4</a>
+                <a href="#!" class="text-white">Контакты</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Авторизация</a>
               </li>
             </ul>
           </div>
           <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Links</h5>
+            <h5 class="text-uppercase">Соцсети</h5>
             <ul class="list-unstyled mb-0">
               <li>
-                <a href="#!" class="text-white">Link 1</a>
+                <a href="https://www.facebook.com" class="text-white">Facebook</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 2</a>
+                <a href="https://twitter.com" class="text-white">Twitter</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 3</a>
+                <a href="https://google.com" class="text-white">Google</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 4</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Links</h5>
-            <ul class="list-unstyled mb-0">
-              <li>
-                <a href="#!" class="text-white">Link 1</a>
+                <a href="https://instagram.com" class="text-white">Instagram</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 2</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Link 3</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Link 4</a>
+                <a href="https://github.com" class="text-white">GitHub</a>
               </li>
             </ul>
           </div>

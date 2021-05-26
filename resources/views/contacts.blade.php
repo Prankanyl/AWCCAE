@@ -6,10 +6,10 @@
 <link rel="stylesheet" href="css/style_contacts.css">
 @endsection
 @section('left_content')
-<div class="menu">
+<div class="menu info">
   <div class="list-group">
     <a href="#" class="list-group-item list-group-item-action"  aria-current="true" role="button">
-      <h3>Каталог товаров</h3>
+      <h2>Каталог товаров</h2>
     </a>
     @foreach ($categories as $item)
     <a href="#" class="list-group-item list-group-item-action">{{$item->category}}</a>

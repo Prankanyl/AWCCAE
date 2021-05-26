@@ -19,7 +19,7 @@ Route::get('/catalog', 'App\Http\Controllers\CatalogController@catalog')->name('
 
 Route::get('/declaration', 'App\Http\Controllers\DeclarationController@declaration')->name('declaration');
 
-Route::get('/contacts', 'App\Http\Controllers\MainController@contacts')->name('contacts');
+Route::get('/contacts', 'App\Http\Controllers\ReviewController@contacts')->name('contacts');
 
 Route::get('/authorization', 'App\Http\Controllers\MainController@authorization')->name('authorization');
 

@@ -8,10 +8,24 @@ use Illuminate\Http\Request;
 
 class DeclarationController extends Controller
 {
-  public function declaration(){
+  public function declaration(Request $request){
     $categories = new CategoryCatalog();
-    $declarations = new Declaration();
-    return view('declaration', ['declarations' => $declarations->all(), 'categories' => $categories->all()]);
+    $declarationsQuery = Declaration::query();
+
+    if ($request->filled('sortby')){
+        $declarationsQuery->where('category', '=', $request->sortby);
+    }
+    if ($request->filled('costfrom')){
+        $declarationsQuery->where('cost', '>=', $request->costfrom);
+    }
+    if ($request->filled('costto')){
+        $declarationsQuery->where('cost', '<=', $request->costto);
+    }
+    if ($request->filled('orderbycategory') || $request->filled('orderby')){
+        $declarationsQuery->orderBy($request->orderbycategory, $request->orderby);
+    }
+    $declarations = $declarationsQuery->paginate(12)->withPath("?" . $request->getQueryString());
+    return view('declaration', ['declarations' => $declarations, 'categories' => $categories->all()]);
   }
 
   public function added_declaration(Request $request){

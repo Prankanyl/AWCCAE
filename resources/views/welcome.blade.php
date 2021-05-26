@@ -3,19 +3,20 @@
 AWCCAE
 @endsection
 @section('left_content')
-<div class="menu">
+<div class="menu info">
   <div class="list-group">
     <a href="#" class="list-group-item list-group-item-action"  aria-current="true" role="button">
-      <h3>Каталог товаров</h3>
+      <h2>Каталог товаров</h2>
     </a>
-@foreach ($categories as $item)
-    <a href="#" class="list-group-item list-group-item-action">{{$item->category}}</a>
+    @foreach ($categories as $item)
+    <a href="/catalog" class="list-group-item list-group-item-action" id="sortby" name="sortby">{{$item->category}}</a>
     @endforeach
     <br>
   </div>
 </div>
 @endsection
 @section('right_content')
+<br>
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -43,7 +44,7 @@ AWCCAE
   </button>
 </div>
 <h1>Каталог товаров</h1>
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-3 g-4 right-menu">
   @foreach ($catalogs as $item)
   <div class="col">
     <div class="card" style="width: 18rem;  height: 31rem;">
@@ -57,7 +58,7 @@ AWCCAE
       </ul>
       <div class="card-body">
         <form class="" action="#" method="post">
-          <button type="button" name="button">В корзину</button>
+          <input type="submit" name="button" value="В корзину" class="btn submit-212529">
         </form>
       </div>
     </div>
