@@ -2,9 +2,7 @@
 @section('title')
 Объявления
 @endsection
-@section('style')
-<link rel="stylesheet" href="css/style_contacts.css">
-@endsection
+
 @section('left_content')
 <div class="menu info">
   <div class="list-group">
@@ -66,23 +64,40 @@
 <div class="row row-cols-1 row-cols-md-3 g-4 right-menu">
   @foreach ($declarations as $item)
   <div class="col">
-    <div class="card" style="width: 18rem;  height: 31rem;">
-      <img src="images/{{$item->img}}" class="card-img-top size-100-200" alt="...">
+    <div class="card card-item">
+      <img src="images/{{$item->img}}" class="card-img-top size-100-200" alt="Нет изображения">
       <div class="card-body">
-        <h5 class="card-title">{{$item->title}}</h5>
-        @if (strlen($item->description) < 150 && strlen($item->title) < 70)
-        <p class="card-text">{{substr($item->description, 0, strlen($item->description))}}</p>
+        @if (strlen($item->title) > 35)
+        <h5 class="card-title">{{mb_substr($item->title, 0, 35).'...'}}</h5>
         @else
-        <p class="card-text">{{substr($item->description, 0, 130)."..."}}</p>
+        <h5 class="card-title">{{$item->title}}</h5>
+        @endif
+        @if (strlen($item->description) > 80)
+        <p class="card-text">{{mb_substr($item->description, 0, 80).'...'}}</p>
+        @else
+        <p class="card-text">{{$item->description}}</p>
         @endif
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Стоимость: {{$item->cost}}</li>
       </ul>
       <div class="card-body">
-        <form class="" action="#" method="post">
-          <input type="submit" name="button" value="В корзину" class="btn submit-212529">
-        </form>
+        <div class="navigation-buttons">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-6" style="padding-left: 0px; margin: auto; padding-bottom: 1%;">
+                <form class="" action="#" method="post">
+                  <input type="submit" name="button" value="В корзину" class="btn submit-212529">
+                </form>
+              </div>
+              <div class="col-lg-6"  style="padding-left: 0px; margin: auto; padding-bottom: 1%;">
+                <form class="" action="/item" method="post">
+                  <input type="submit" name="button" value="Подробнее" class="btn submit-212529">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

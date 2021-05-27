@@ -15,6 +15,7 @@ class CatalogController extends Controller
       $categories = new CategoryCatalog();
       if ($request->filled('sortby')){
           $catalogsQuery->where('category', '=', $request->sortby);
+          // dd($request);
       }
       if ($request->filled('costfrom')){
           $catalogsQuery->where('cost', '>=', $request->costfrom);

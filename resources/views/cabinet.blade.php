@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title')
-AWCCAE
+Личный кабинет
 @endsection
 @section('style')
 <link rel="stylesheet" href="css/style_authorization.css">

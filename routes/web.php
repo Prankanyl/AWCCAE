@@ -26,3 +26,5 @@ Route::get('/authorization', 'App\Http\Controllers\MainController@authorization'
 Route::get('/cabinet', 'App\Http\Controllers\MainController@cabinet')->name('cabinet');
 
 Route::post('/review', 'App\Http\Controllers\ReviewController@review')->name('review');
+
+Route::get('/item', 'App\Http\Controllers\MainController@item')->name('item');

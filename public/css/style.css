@@ -40,6 +40,28 @@ input.submit-212529{
   color: #ffffff;
 }
 
+input.submit-212529:hover{
+  background-color: #212529;
+  color: #ffffff;
+}
+
+div.card-item{
+  /* position: absolute; */
+  background-color: #ffffff;
+  width: 18rem;
+  height: 32rem;
+  margin-left: 4%;
+  margin-top: 3%;
+  border: 1px solid #212529;
+  border-radius: 4px;
+}
+
+div.card-item:hover{
+  width: 19.25rem;
+  height: 33rem;
+  margin: 1%;
+}
+
 footer {
      /* margin-top: 1%; */
  }
