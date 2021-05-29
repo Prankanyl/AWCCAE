@@ -16,6 +16,11 @@ class CreateBasketsTable extends Migration
         Schema::create('baskets', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('id_users');
+            $table->integer('id_catalogs');
+            $table->integer('id_declarations');
+            $table->integer('count');
+            $table->integer('status');
         });
     }
 
