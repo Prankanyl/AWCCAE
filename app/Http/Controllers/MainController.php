@@ -7,6 +7,7 @@ use App\Models\CategoryCatalog;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
@@ -30,13 +31,15 @@ class MainController extends Controller
     return view('cabinet', ['categories' => $categories->all()]);
   }
 
-  public function item(Request $request){
+  public function item($id ,Request $request){
     $categories = new CategoryCatalog();
-    $item = Route::get('item');
-    if ($request->filled('item')){
+    $catalogsQuery = Catalog::query();
+
+    if ($request->filled('item_id')){
+        $catalogsQuery->where('id', '=', intval($id));
 
     }
-    // dd($request->path());
-    return view('item', ['categories' => $categories->all()]);
+    $item = $catalogsQuery->first();
+    return view('item', ['categories' => $categories->all(), 'product' => $item]);
   }
 }

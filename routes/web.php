@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\MainController@welcome')->name('welcome');
 
-Route::get('/catalog', 'App\Http\Controllers\CatalogController@catalog')->name('catalog');
+Route::get('/catalog/{category?}', 'App\Http\Controllers\CatalogController@catalog')->name('catalog');
 
 Route::get('/declaration', 'App\Http\Controllers\DeclarationController@declaration')->name('declaration');
 
@@ -27,4 +27,4 @@ Route::get('/cabinet', 'App\Http\Controllers\MainController@cabinet')->name('cab
 
 Route::post('/review', 'App\Http\Controllers\ReviewController@review')->name('review');
 
-Route::get('/item', 'App\Http\Controllers\MainController@item')->name('item');
+Route::get('/item/{id}', 'App\Http\Controllers\MainController@item')->name('item');

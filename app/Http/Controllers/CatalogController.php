@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\DB;
 
 class CatalogController extends Controller
 {
-    public function catalog(Request $request){
-      // dd($request);
-      $catalogsQuery = Catalog::query();
+    public function catalog($category = null, Request $request){
       $categories = new CategoryCatalog();
+      $catalogsQuery = Catalog::query();
+
+      if (isset($category)){
+          $catalogsQuery->where('category', '=', $category);
+      }
       if ($request->filled('sortby')){
           $catalogsQuery->where('category', '=', $request->sortby);
           // dd($request);
@@ -28,7 +31,7 @@ class CatalogController extends Controller
       }
       if ($request->filled('title')){
           $catalogsQuery->orWhere('title', 'like', '%'.$request->title.'%');
-          // dd($request);
+          // dd($catalogsQuery);
       }
       $catalogs = $catalogsQuery->paginate(12)->withPath("?" . $request->getQueryString());
       return view('catalog', ['catalogs' => $catalogs, 'categories' => $categories->all()]);

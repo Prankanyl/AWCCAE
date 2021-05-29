@@ -9,8 +9,8 @@
     <a href="#" class="list-group-item list-group-item-action"  aria-current="true" role="button">
       <h2>Каталог товаров</h2>
     </a>
-@foreach ($categories as $item)
-    <a href="#" class="list-group-item list-group-item-action">{{$item->category}}</a>
+    @foreach ($categories as $item)
+    <a href="/catalog/{{$item->category}}" class="list-group-item list-group-item-action">{{$item->category}}</a>
     @endforeach
     <br>
   </div>
@@ -65,7 +65,7 @@
   @foreach ($declarations as $item)
   <div class="col">
     <div class="card card-item">
-      <img src="images/{{$item->img}}" class="card-img-top size-100-200" alt="Нет изображения">
+      <img src="/images/{{$item->img}}" class="card-img-top size-100-200" alt="Нет изображения">
       <div class="card-body">
         @if (strlen($item->title) > 35)
         <h5 class="card-title">{{mb_substr($item->title, 0, 35).'...'}}</h5>
@@ -91,7 +91,7 @@
                 </form>
               </div>
               <div class="col-lg-6"  style="padding-left: 0px; margin: auto; padding-bottom: 1%;">
-                <form class="" action="/item" method="post">
+                <form class="" action="/item" method="get">
                   <input type="submit" name="button" value="Подробнее" class="btn submit-212529">
                 </form>
               </div>

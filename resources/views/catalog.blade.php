@@ -2,17 +2,14 @@
 @section('title')
 Каталог
 @endsection
-@section('style')
-<link rel="stylesheet" href="css/style_contacts.css">
-@endsection
 @section('left_content')
 <div class="menu info">
   <div class="list-group">
     <a href="#" class="list-group-item list-group-item-action"  aria-current="true" role="button">
       <h2>Каталог товаров</h2>
     </a>
-@foreach ($categories as $item)
-    <a href="#" class="list-group-item list-group-item-action">{{$item->category}}</a>
+    @foreach ($categories as $item)
+    <a href="/catalog/{{$item->category}}" class="list-group-item list-group-item-action">{{$item->category}}</a>
     @endforeach
     <br>
   </div>
@@ -67,7 +64,7 @@
   @foreach ($catalogs as $item)
   <div class="col">
     <div class="card card-item">
-      <img src="images/{{$item->img}}" class="card-img-top size-100-200" alt="Нет изображения">
+      <img src="/images/{{$item->img}}" class="card-img-top size-100-200" alt="Нет изображения">
       <div class="card-body">
         @if (strlen($item->title) > 35)
         <h5 class="card-title">{{mb_substr($item->title, 0, 35).'...'}}</h5>
@@ -89,12 +86,12 @@
             <div class="row">
               <div class="col-lg-6" style="padding-left: 0px; margin: auto; padding-bottom: 1%;">
                 <form class="" action="#" method="post">
-                  <input type="submit" name="button" value="В корзину" class="btn submit-212529">
+                  <button name="item_id" id="item_id" value="{{$item->id}}" class="btn submit-212529">В корзину</button>
                 </form>
               </div>
               <div class="col-lg-6"  style="padding-left: 0px; margin: auto; padding-bottom: 1%;">
-                <form class="" action="/item" method="post">
-                  <input type="submit" name="button" value="Подробнее" class="btn submit-212529">
+                <form class="" action="/item/{{$item->id}}" method="get">
+                  <button name="item_id" id="item_id" value="{{$item->id}}" class="btn submit-212529">Подробнее</button>
                 </form>
               </div>
             </div>

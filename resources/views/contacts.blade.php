@@ -12,7 +12,7 @@
       <h2>Каталог товаров</h2>
     </a>
     @foreach ($categories as $item)
-    <a href="#" class="list-group-item list-group-item-action">{{$item->category}}</a>
+    <a href="/catalog/{{$item->category}}" class="list-group-item list-group-item-action">{{$item->category}}</a>
     @endforeach
     <br>
   </div>
