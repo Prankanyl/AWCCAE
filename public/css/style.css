@@ -1,3 +1,6 @@
+p.warning-text {
+  color: #db2828;
+}
 div.left-menu{
   background-color: #212529;
 }
@@ -102,9 +105,29 @@ div.review-card {
 /*Авторизация*/
 
 .container-center{
-
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  background-color: #212529;
+  color: #ffffff;
+  border-radius: 15px;
 }
-
+@media only screen and (max-width: 479px){
+.container-center{
+  margin-top: 0%;
+  margin-bottom: 0%;
+  padding: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  background-color: #212529;
+  color: #ffffff;
+  border-radius: 0px;
+}
+}
 .form-horizontal{
   position: relative;
   top: 20%;
@@ -227,8 +250,12 @@ div.review-card {
  text-transform: capitalize;
  transition: all 0.5s ease 0s;
 }
-@media only screen and (max-width: 479px){
+/* @media only screen and (max-width: 479px){
+  .form-horizontal{
+    top: 20%;
+  }
  .form-horizontal .form-group{
+
  padding: 0 25px;
  }
  .form-horizontal .form-group i{
@@ -237,7 +264,7 @@ div.review-card {
  .form-horizontal .btn{
  padding: 10px 20px;
  }
-}
+} */
 
 .tab {
     margin-top: 1%;

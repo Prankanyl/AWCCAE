@@ -27,13 +27,56 @@
 </div>
 
 <div id="Person" class="tabcontent">
-  <h3>Личные данные</h3>
-  <p>London is the capital city of England.</p>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4">
+        <img src="/images/{{$user->img}}" alt="...">
+      </div>
+      <div class="col-lg-8">
+        <h3>Личные данные</h3>
+        <p><b>Логин:</b> {{$user->login}}</p>
+        <p><b>Фамилия:</b> {{$user->lastname}}</p>
+        <p><b>Имя:</b> {{$user->firstname}}</p>
+        <p><b>Отчество:</b> {{$user->patronymic}}</p>
+        <p><b>Email:</b> {{$user->email}}</p>
+        <p><b>Телефон:</b> {{$user->number_phone}}</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="Company" class="tabcontent">
-  <h3>Данные компании</h3>
-  <p>Paris is the capital of France.</p>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        @if(isset($company))
+        <h3>Данные компании</h3>
+
+        <h4>Сокращенное наименование:</h4>
+        <p><b>Название компании:</b> {{$company->title}}</p>
+        <p><b>Сокращенное наименование:</b> {{$company->abbreviated_name}}</p>
+
+        <h3>Банковские реквизиты:</h3>
+        <p><b>р/счет:</b> {{$company->iban}}</p>
+        <p><b>Полное наименование:</b> {{$company->mank_name}}</p>
+        <p><b>Адрес:</b> {{$company->address}}</p>
+        <p><b>БИК:</b> {{$company->bic}}</p>
+        <p><b>УНП:</b> {{$company->ynp}}</p>
+
+        <h4>Юридический и почтовый адрес:</h4>
+        <p><b>Юридический адрес:</b> {{$company->legal_address}}</p>
+        <p><b>Телевон:</b> {{$company->number_phone}}</p>
+        <p><b>Электронная почта:</b> {{$company->email}}</p>
+        @else
+        <h3>Данные о компании отсутствуют</h3>
+        <form class="" action="" method="post">
+          @csrf
+          <button type="button" name="button" id="button" class="btn btn-lg submit-212529" style="margin-top: 15%; margin-bottom: 16%; position: relative; left: 45%;">Добавить</button>
+        </form>
+        @endif
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="Basket" class="tabcontent">

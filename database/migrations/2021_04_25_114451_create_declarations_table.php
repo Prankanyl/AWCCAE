@@ -21,6 +21,15 @@ class CreateDeclarationsTable extends Migration
             $table->string('img');
             $table->float('cost');
             $table->integer('id_users');
+            $table->string('view');
+
+            // $table->id();
+            // $table->string('category');
+            // $table->string('title');
+            // $table->text('description');
+            // $table->string('img');
+            // $table->float('cost');
+            // $table->integer('id_users');
         });
     }
 

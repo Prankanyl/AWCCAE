@@ -21,10 +21,20 @@ Route::get('/declaration', 'App\Http\Controllers\DeclarationController@declarati
 
 Route::get('/contacts', 'App\Http\Controllers\ReviewController@contacts')->name('contacts');
 
-Route::get('/authorization', 'App\Http\Controllers\MainController@authorization')->name('authorization');
+Route::get('/authorization', 'App\Http\Controllers\ProfileController@authorization')->name('authorization');
 
-Route::get('/cabinet', 'App\Http\Controllers\MainController@cabinet')->name('cabinet');
+Route::post('/cabinet', 'App\Http\Controllers\ProfileController@cabinet')->name('cabinet');
+
+Route::post('/admin_panel', 'App\Http\Controllers\ProfileController@admin_panel')->name('admin_panel');
 
 Route::post('/review', 'App\Http\Controllers\ReviewController@review')->name('review');
 
 Route::get('/item/{id}', 'App\Http\Controllers\MainController@item')->name('item');
+
+Route::get('/registration_user', 'App\Http\Controllers\ProfileController@registration_user')->name('registration_user');
+
+Route::get('/registration_company', 'App\Http\Controllers\ProfileController@registration_company')->name('registration_company');
+
+Route::post('/registration', 'App\Http\Controllers\ProfileController@registration')->name('registration');
+
+// Route::get('/item/{id}', 'App\Http\Controllers\MainController@item')->name('item');

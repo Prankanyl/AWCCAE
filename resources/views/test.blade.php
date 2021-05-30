@@ -1,15 +1,16 @@
-<div class="card-body">
-  <a href="/item"><h5 class="card-title">{{$item->title}}</h5></a>
-  @if (strlen($item->description) > 50)
-  <p class="card-text">{{substr($item->description, 0, 50)."..."}}</p>
-  @else
-  <p class="card-text">{{$item->description}}</p>
-  @endif
-</div>
-
-
-
-<div class="card-body">
-  <h5 class="card-title">{{strlen($item->title)}}</h5>
-  <p class="card-text">{{strlen($item->description)}}</p>
+<div class="container-fluid">
+  <div class="row">
+    <h3>Личные данные</h3>
+    <div class="col-lg-4">
+      <img src="" alt="">
+    </div>
+    <div class="col-lg-8">
+      <p><b>Логин:</b> {{$user->login}}</p>
+      <p><b>Фамилия:</b> {{$user->lastname}}</p>
+      <p><b>Имя:</b> {{$user->firstname}}</p>
+      <p><b>Отчество:</b> {{$user->patronymic}}</p>
+      <p><b>Email:</b> {{$user->email}}</p>
+      <p><b>Телефон:</b> {{$user->number_phone}}</p>
+    </div>
+  </div>
 </div>

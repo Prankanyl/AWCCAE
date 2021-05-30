@@ -17,10 +17,18 @@ class CreateBasketsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->integer('id_users');
-            $table->integer('id_catalogs');
-            $table->integer('id_declarations');
+            $table->integer('id_catalogs')->nullable();
+            $table->integer('id_declarations')->nullable();
             $table->integer('count');
-            $table->integer('status');
+            $table->string('status');
+
+            // $table->id();
+            // $table->timestamps();
+            // $table->integer('id_users');
+            // $table->integer('id_catalogs');
+            // $table->integer('id_declarations');
+            // $table->integer('count');
+            // $table->int('status');
         });
     }
 
