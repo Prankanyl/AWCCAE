@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="css/style_contacts.css">
 @endsection
 @section('left_content')
-<div class="menu info">
+<div class="menu">
   <div class="list-group">
     <a href="#" class="list-group-item list-group-item-action"  aria-current="true" role="button">
       <h2>Каталог товаров</h2>

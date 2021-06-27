@@ -4,7 +4,7 @@
 @endsection
 
 @section('left_content')
-<div class="menu info">
+<div class="menu">
   <div class="list-group">
     <a href="#" class="list-group-item list-group-item-action"  aria-current="true" role="button">
       <h2>Каталог товаров</h2>
@@ -32,15 +32,21 @@
     <div class="form-group">
       <label for="orderbycategory"><h5>Сортировать по</h5></label>
       <select class="form-select" aria-label="Default select example" name="orderbycategory" id="orderbycategory">
-        <option disabled selected>Выберите критерий</option>
+        <option disabled selected value="title">Выберите критерий</option>
         <option value="title">Названию</option>
         <option value="cost">Цене</option>
       </select>
       <br>
       <select class="form-select" aria-label="Default select example" name="orderby" id="orderby">
-        <option disabled selected>Выберите критерий</option>
+        <option disabled selected value="asc">Сортировать по</option>
         <option value="asc">По возрастанию</option>
         <option value="desc">По убыванию</option>
+      </select>
+      <br>
+      <select class="form-select" aria-label="Default select example" name="view" id="view">
+        <option disabled selected value="Продажа">По типу объявлению</option>
+        <option value="Продажа">Продажа</option>
+        <option value="Покупка">Покупка</option>
       </select>
     </div>
     <br>
@@ -65,7 +71,14 @@
   @foreach ($declarations as $item)
   <div class="col">
     <div class="card card-item">
-      <img src="/images/{{$item->img}}" class="card-img-top size-100-200" alt="Нет изображения">
+      <div class="img_text">
+        <img src="{{$item->img}}" class="card-img-top size-100-200" alt="Нет изображения">
+        @if($item->view == 'Продажа')
+        <div class="top-right red"><b>{{$item->view}}</b></div>
+        @else
+        <div class="top-right green"><b>{{$item->view}}</b></div>
+        @endif
+      </div>
       <div class="card-body">
         @if (strlen($item->title) > 35)
         <h5 class="card-title">{{mb_substr($item->title, 0, 35).'...'}}</h5>
@@ -79,20 +92,25 @@
         @endif
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Стоимость: {{$item->cost}}</li>
+        <li class="list-group-item">Стоимость: {{$item->cost}} р.</li>
       </ul>
       <div class="card-body">
         <div class="navigation-buttons">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-lg-6" style="padding-left: 0px; margin: auto; padding-bottom: 1%;">
-                <form class="" action="#" method="post">
-                  <input type="submit" name="button" value="В корзину" class="btn submit-212529">
+              <div class="col-lg-12" style="padding-left: 0px; margin: auto; padding-bottom: 1%;">
+                <form class="" action="/buy" method="post">
+                  @csrf
+                  <p>
+                    <label for="count">Количество</label>
+                    <input type="number" id="count" name="count" value="1" min="1" max="100" step="1" class="input_count">
+                  </p>
+                  <button name="declaration_item_id" id="declaration_item_id" value="{{$item->id}}" class="btn submit-212529">В корзину</button>
                 </form>
               </div>
-              <div class="col-lg-6"  style="padding-left: 0px; margin: auto; padding-bottom: 1%;">
-                <form class="" action="/item" method="get">
-                  <input type="submit" name="button" value="Подробнее" class="btn submit-212529">
+              <div class="col-lg-12"  style="padding-left: 0px; margin: auto; padding-bottom: 1%;">
+                <form class="" action="/item/{{$item->id}}" method="get">
+                  <button name="declaration_item_id" id="declaration_item_id" value="{{$item->id}}" class="btn submit-212529">Подробнее</button>
                 </form>
               </div>
             </div>

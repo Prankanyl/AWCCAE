@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CategoryCatalog;
 use App\Models\Declaration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DeclarationController extends Controller
 {
@@ -24,28 +25,54 @@ class DeclarationController extends Controller
     if ($request->filled('orderbycategory') || $request->filled('orderby')){
         $declarationsQuery->orderBy($request->orderbycategory, $request->orderby);
     }
+    if ($request->filled('view')){
+        $declarationsQuery->where('view', '=', $request->view);
+    }
     $declarations = $declarationsQuery->paginate(12)->withPath("?" . $request->getQueryString());
     return view('declaration', ['declarations' => $declarations, 'categories' => $categories->all()]);
   }
 
-  public function added_declaration(Request $request){
+  public function declaration_update(Request $request){
+    if(isset($request->update_declaration_item)){
+      if(is_null($request->file('img'))){
+        $img = $request->image;
+      }
+      else{
+        $path = $request->file('img')->store('images', 'public');
+        $img = "/storage/".$path;
+      }
+
+      $update = DB::update("
+      update declarations set
+      category = ? ,
+      title = ? ,
+      description = ? ,
+      img = ? ,
+      cost = ? ,
+      view = ?
+      where id = ?",
+      [$request->category,
+      $request->title,
+      $request->description,
+      $img,
+      $request->cost,
+      $request->view,
+      $request->update_declaration_item]
+    );
     // dd($request);
-    // $valid = $request->validate([
-    //   'email' => 'required|min:4|max:100',
-    //   'subject' => 'required|min:4|max:100',
-    //   'message' => 'required|min:4|max:500'
-    // ]);
+    }
+    if(isset($request->delete_declaration_item)){
+      $delete = DB::delete('delete from declarations where id = ?',[$request->delete_declaration_item]);
+    }
 
-    $declaration = new Declaration();
-    $declaration->category = $request->input('category');
-    $declaration->title = $request->input('title');
-    $declaration->description = $request->input('description');
-    // $declaration->img = $request->input('img');
-    $declaration->cost = $request->input('cost');
-    // $declaration->id_users = $request->input('message');
-
-    $declaration->save();
-
-    return redirect()->route('declaration');
+    return redirect()->route('cabinet');
+  }
+  public function update(Request $request){
+    $categories = new CategoryCatalog();
+    $declarationQuery = Declaration::query();
+    $declarationQuery->where('id', '=', $request->declaration_item_id);
+    $declaration = $declarationQuery->first();
+    // dd($declaration);
+    return view('update', ['categories' => $categories->all(), 'declaration' => $declaration]);
   }
 }

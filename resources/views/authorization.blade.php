@@ -9,7 +9,7 @@
   <div class="container">
    <div class="row">
      <div class="col-md-offset-3 col-md-6">
-       <form class="form-horizontal" action="/cabinet" method="post">
+       <form class="form-horizontal" action="/user_verification" method="post">
          @csrf
          <span class="heading"><h1>АВТОРИЗАЦИЯ</h1></span>
          @if(isset($sing_in))
